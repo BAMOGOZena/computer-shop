@@ -15,6 +15,8 @@ return new class extends Migration
     {
         Schema::create('journal__caisses', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('boutique_id')->constrained();
+            $table->Number('valeur_caisse');
             $table->timestamps();
         });
     }

@@ -15,6 +15,8 @@ return new class extends Migration
     {
         Schema::create('boutique__type__ventes', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('boutique_id')->constrained();
+            $table->foreignId('type_vente_id')->constrained('type_ventes');
             $table->timestamps();
         });
     }

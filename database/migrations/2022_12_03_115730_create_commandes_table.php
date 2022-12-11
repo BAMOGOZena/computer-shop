@@ -15,6 +15,8 @@ return new class extends Migration
     {
         Schema::create('commandes', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('fournisseur_id')->constrained();
+            $table->integer('num_cmde');
             $table->timestamps();
         });
     }

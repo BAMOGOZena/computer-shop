@@ -15,6 +15,8 @@ return new class extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('boutique_id')->constrained();
+            $table->String('libelle_cat');
             $table->timestamps();
         });
     }

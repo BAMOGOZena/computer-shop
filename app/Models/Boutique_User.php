@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Boutique_User extends Model
 {
     use HasFactory;
+    protected $fillable = ['boutique_id', 'user_id'];
 }

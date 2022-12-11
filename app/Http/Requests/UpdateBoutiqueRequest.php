@@ -13,7 +13,7 @@ class UpdateBoutiqueRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -25,6 +25,8 @@ class UpdateBoutiqueRequest extends FormRequest
     {
         return [
             //
+            "nom_bout" => "required|max:200" . $this->boutique,
+            "adresse_bout" => "required|max:50",
         ];
     }
 }

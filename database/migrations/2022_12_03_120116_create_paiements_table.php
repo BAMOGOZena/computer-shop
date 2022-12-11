@@ -15,6 +15,8 @@ return new class extends Migration
     {
         Schema::create('paiements', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('vente_id')->constrained();
+            $table->number('montant_paye');
             $table->timestamps();
         });
     }

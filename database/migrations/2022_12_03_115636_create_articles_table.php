@@ -15,6 +15,12 @@ return new class extends Migration
     {
         Schema::create('articles', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('categorie_id')->constrained();
+            $table->foreignId('vente_id')->constrained();
+            $table->String('nom_art');
+            $table->string('caracteristique');
+            $table->Number('prix_achat');
+            $table->integer('qtite_dispo');
             $table->timestamps();
         });
     }

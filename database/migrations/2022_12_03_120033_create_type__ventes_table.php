@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('type__ventes', function (Blueprint $table) {
             $table->id();
+            $table->string('libelle_tvente');
             $table->timestamps();
         });
     }

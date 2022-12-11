@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Commande extends Model
 {
     use HasFactory;
+    protected $fillable = ['fournisseur_id', 'num_cmde'];
+
+
+    public function fournisseur()
+    {
+        return $this->belongsTo(Fournisseur::class);
+    }
 }

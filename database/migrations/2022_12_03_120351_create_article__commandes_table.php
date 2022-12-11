@@ -15,6 +15,8 @@ return new class extends Migration
     {
         Schema::create('article__commandes', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('article_id')->constrained();
+            $table->foreignId('commande_id')->constrained();
             $table->timestamps();
         });
     }

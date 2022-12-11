@@ -16,6 +16,8 @@ class BoutiqueController extends Controller
     public function index()
     {
         //
+        $boutiques = Boutique::all();
+        return view('front-office.boutiques.index', ['boutiques' => $boutiques]);
     }
 
     /**
@@ -26,6 +28,8 @@ class BoutiqueController extends Controller
     public function create()
     {
         //
+        $boutique = new Boutique();
+        return view('front-office.boutiques.create', compact('boutique'));
     }
 
     /**
@@ -37,6 +41,11 @@ class BoutiqueController extends Controller
     public function store(StoreBoutiqueRequest $request)
     {
         //
+        $boutique = Boutique::create([
+            'nom_bout' => $request->nom_bout,
+            'adresse_bout' => $request->adresse_bout
+        ]);
+        return redirect()->route('boutiques.show', $boutique)->with("votre nouvelle boutique a été crée");
     }
 
     /**
@@ -48,6 +57,7 @@ class BoutiqueController extends Controller
     public function show(Boutique $boutique)
     {
         //
+        return view('front-office.boutiques.show', ["boutique" => $boutique]);
     }
 
     /**
@@ -59,6 +69,7 @@ class BoutiqueController extends Controller
     public function edit(Boutique $boutique)
     {
         //
+        return view('front-office.boutiques.edit', ['boutique' => $boutique]);
     }
 
     /**
@@ -71,6 +82,12 @@ class BoutiqueController extends Controller
     public function update(UpdateBoutiqueRequest $request, Boutique $boutique)
     {
         //
+        Boutique::where('id', $boutique)->update([
+            'nom_bout' => $request->nom_bout,
+            'adresse_bout' => $request->adresse_bout
+
+        ]);
+        return redirect()->route('boutiques.show', $boutique)->with("Modification éffectuée");
     }
 
     /**
@@ -79,8 +96,10 @@ class BoutiqueController extends Controller
      * @param  \App\Models\Boutique  $boutique
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Boutique $boutique)
+    public function destroy(Boutique $id)
     {
         //
+        Boutique::destroy($id);
+        return redirect()->route('boutiques.index')->with('Suppression réussie');
     }
 }
